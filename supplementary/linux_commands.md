@@ -353,6 +353,34 @@ shawn-bailey@bgmdevel:~/teaching/fall-2022/cs140/lecture_notes$ rm supplementary
 rm: cannot remove 'supplementary/': Is a directory
 ```
 
+# Summary
+
+| Symbol | Description |
+| --- | ----------- |
+| `.` | Current directory |
+| `..` | One directory back |
+| `~` | Home directory |
+| `*` | Wild card character |
+
+| Command | Description |
+| --- | ----------- |
+| `pwd` | Prints working directory. |
+| `cd ..` | Changes one directory backwards |
+| `cd ~` | Changes to home directory |
+| `cd -` | Change to previous directory |
+| `cd dir` | Change to directory `dir` (assuming `dir` exists where you currently are) |
+| `cd ../..` | Change two directories backwards |
+| `ls` | Lists everything in your current directory |
+| `ls *.java` | Lists all `.java` files in your current directory. |
+| `ls dir` | Lists contents of directory `dir` (assuming `dir` exists where you currently are) |
+| `ls -R` | Lists all contents in a directory, recursively. |
+| `mkdir new_dir` | Makes a new directory in current directory, called `new_dir`. |
+| `mkdir -p path` | Makes a new directory at the specified path. Create path if it doesn't exist. |
+| `touch filename` | Create an empty file, called `filename`. |
+| `gedit filename` | Opens `filename` in gedit. If the file doesn't exist, creates it as well. |
+| `rm filename` | Removes the file called `filename`. |
+| `rm -rf dir` | Forcible removes the directory called `dir`. |
+
 # Conclusion
 
 This was created since a student brought up they were struggling with the terminal.
