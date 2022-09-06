@@ -1,47 +1,79 @@
-**More on Reading and Writing Files**
+---------------------------------------------
+More on Reading and Writing Files
+---------------------------------------------
+
 - We saw how to read text files using a `FileReader` and `BufferedReader`
 
-**Writing Text Files**
-- There are numerous different classes related to outputting data
-- Here is one for “printing” text files
-  - `java.io.PrintWriter output = new java.io.PrintWriter(`<br/>&nbsp;&nbsp;&nbsp;
-    `new java.io.BufferedWriter(new java.io.FileWriter(outputFielename)));`
-  - `FileWriter` – writes text to character files
-    - Can construct with a File or String filename, with an optional characterset and append (versus overwrite)
-    - Has methods, `write()`, to write strings to a file
-  - `BufferedWriter` – writes text to a character output stream, using a buffer to improved performance
-    - Constructor requires a `Writer`, such as `FileWriter`, and an optional buffer size
-    - There are also `Writers` for character arrays, output streams, and Strings
-    - Has methods, write(), to write strings to the Writer
-    - Note that several commentators say that Java actually implements the `PrintWriter` with
-a `BufferedWriter` in the code so you can just write
-     - `java.io.PrintWriter output = new java.io.FileWriter(outputFielename);`
-  - `PrintWriter` – prints formatted representations of objects to text output streams
-  - Has constructors for `File`, `OutputStream`, `Writer`, or `String` filename
-  - Has `print()`, `printf()`, and `println()` methods for `String` and the primitive types
-  - Has `format()` method to print using a format string
+# Writing Text Files
 
-**Reading and writing data from a byte array**
-- The byte data that we get from a binary file needs to be converted to the correct primitive type
-- The primitive types that we store in a binary file needs to be converted from primitive types to byte data
+- There are numerous different classes related to outputting data
+- Here is one for “printing” text files:
+	- `java.io.PrintWriter output = new java.io.PrintWriter(`<br/>&nbsp;&nbsp;&nbsp;
+    `new java.io.BufferedWriter(new java.io.FileWriter(outputFileName)));`
+    
+**The `FileWriter` class** 
+- writes text to character files
+- Can construct with a `File` or `String` filename, with an optional characterset and append (versus overwrite)
+- Has methods, `write()`, to write strings to a file
+    	
+**The `BufferedWriter` class**
+- writes text to a character output stream, using a buffer to improve performance
+- Constructor requires a `Writer`, such as `FileWriter`, and an optional buffer size
+- There are also `Writers` for character arrays, output streams, and `Strings`
+- Has methods, `write()`, to write strings to the `Writer`
+	- Note that several commentators say that Java actually implements the `PrintWriter` with
+a `BufferedWriter` in the code so you can just write:
+	- `java.io.PrintWriter output = new java.io.FileWriter(outputFileName);`
+	
+**The `PrintWriter` class**	
+- prints formatted representations of objects to text output streams
+- Has various constructors for `File`, `OutputStream`, `Writer`, or `String` filename
+- Has `print()`, `printf()`, and `println()` methods for `String` and the primitive types
+- Has `format()` method to print using a format string
+
+# Reading and writing data from a byte array
+
+- Bytes to primitives: The byte data that we get from a binary file needs to be converted to the correct primitive type
+- Primitives to bytes: The primitive types that we store in a binary file needs to be converted from primitive types to byte data
+
+**The `ByteBuffer` class**
+
 - We can use the `ByteBuffer` class to do the conversions
-- We can wrap a `ByteBuffer` around a byte array, and then use the `ByteBuffer`'s methods to get primitive types from a byte array and put primitive types into a byte array
+	- First, we wrap a `ByteBuffer` around a byte array 
+	- Then, use the `ByteBuffer`'s methods to `get` primitive types *from* a byte array 
+	- Or, `put` primitive types *into* a byte array
+	
 - There are `get` and `put` methods for all of the primitive types, except for `boolean`
-  - We need to keep in mind the sizes of the primitive types when putting and getting values
-- To get a `ByteBuffer` we do the following
-  - Create a byte array
+	- IMPORTANT: We need to keep in mind the sizes of the primitive types when putting and getting values
+
+**Creating a `ByteBuffer` via the `wrap()` method**
+
+- To create a `ByteBuffer` we do the following:
+  - First, create a byte array
     - `byte[] byteArray = new byte[20];`
-  - Wrap a `ByteBuffer` around the byte array
+  - Then, `wrap` a `ByteBuffer` around the byte array
     - `ByteBuffer byteBuffer = ByteBuffer.wrap(byteArray);`
     - `ByteBuffer` doesn't have a constructor
     - We use the static method `ByteBuffer.wrap(byte[] b)`, which returns a `ByteBuffer` object
+    
+**Leveraging the `ByteBuffer`: the `put()` and `get()` methods**
+
   - We now have a `ByteBuffer` that can read and write primitive types to the byte array that it is was *wrapped* around
-    - `put` methods are used to write primitive types into the byte array
-    - `get` methods are used to read primitive types from the byte array
-    - The `ByteBuffer` does all of the encoding and decoding of the values
-    - Since the `ByteBuffer` writes the bits of the primitive type to the byte array, using the number of bytes associated with the primitive type's size, the values can be stored and reread and have the exact same value as the original primitive had
-  - Java documentation for <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" target="blank">ByteBuffer</a>
-- The following example does the following
+    - `put` methods are used to *write* primitive types *into* the byte array
+    	- `putFloat()`, `putLong()`, `putDouble()`, `putChar()` etc.
+    - `get` methods are used to *read* primitive types *from* the byte array
+    	- `getFloat()`, `getLong()`, `getDouble()`, `getChar()`, etc.
+    - The `ByteBuffer` does all of the encoding and decoding of the values for us
+    
+    - The `ByteBuffer` writes the bits of the primitive type to the byte array, using the number of bytes associated with the primitive type's size
+    - The values can be stored and reread and have the exact same value as the original primitive had
+  - <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" target="blank">Java documentation for ByteBuffer</a>
+  
+# `ByteBuffer` Example Code
+
+**Example High Level Summary**
+
+- The following example does the following:
   - Creates a byte array
   - Creates a `ByteBuffer` wrapped around the byte array
   - Puts a `double` in the `ByteBuffer` at offset 0 (8 bytes)
@@ -53,6 +85,9 @@ a `BufferedWriter` in the code so you can just write
   - Outputs the `double` and `int` put into the original `ByteBuffer`
   - Output the `double` and `int` got out of the second `ByteBuffer`
   - We see that the `double` and `int` values match
+  
+**Example Relevance** 
+
 - What the example is attempting to show is
   - We start with an byte array containing all 0s
   - We wrap a `ByteBuffer` around it, which allows us to write primitive types into the byte array via the `ByteBuffer`
@@ -60,19 +95,22 @@ a `BufferedWriter` in the code so you can just write
   - We then make a copy of the byte array – equivalent to storing as a binary file, and reading it later
   - We wrap a `ByteBuffer` around the copy of the byte array
   - We can read the two values stored in the original byte array via the `ByteBuffer`
+  
+**Working with a ByteBuffer - Accounting for Primitive Sizes**
+
 - The `ByteBuffer` can keep track of where to write the next primitive type or you can
-- Each get and put method has a version where you specify the starting location of the operation
-- Each get an put method has a version where you don't specify the starting location of the operation
-  - These increment the position based on the size of the primitive type
-- The position() method can be used to set the index in the byte array that the `ByteBuffer` is using
-- For my implementation of program 2, I used the get and put methods that specified the index to read/write from
+- Each `get` and `put` method has a version where you specify the starting location of the operation
+- Each `get` an `put` method has a version where you don't specify the starting location of the operation
+	- These increment the position based on the size of the primitive type
+- The `position()` method can be used to set the index in the byte array that the `ByteBuffer` is using
+- For my implementation of program 2, I used the `get` and `put` methods that specified the index to read/write from
 
 ```java
 public class ByteBufferSampleCode {
 	// program to store a double and an int in a byte array using a ByteBuffer
 	// then read the values back and see that the values were properly
 	// stored and retrieved
-	// copy the byte array to a new byte array, and retieve the double and int
+	// copy the byte array to a new byte array, and retrieve the double and int
 	// that were stored in the original byte array and see that they are once
 	// again retieved from a copy of the byte array (wants to simulate saving the
 	// first byte array to a file, and then reading it into the second byte array)
@@ -187,7 +225,7 @@ public class ByteBufferSampleCode {
 }
 ```
 
-**Converting bytes to primitive types and Strings and converting primitive types and Strings to bytes**
+**Quick Review on the ByteBuffer**
 - The `ByteBuffer` can be used to convert bytes to primitive types and primitive types to bytes
 - The `ByteBuffer` has methods to
   - Add primitive types to a `ByteBuffer`
@@ -196,6 +234,8 @@ public class ByteBufferSampleCode {
     - `getChar()`, `getDouble()`, `getFloat()`, `getInt()`, `getLong()`, `getShort()`
   - The `get` and `put` methods either require an index to get/put the value or at the current location
   - There is no constructor for the `ByteBuffer`, but one way to create one is `ByteBuffer.wrap(byte[] byteArray)`, which will return a `ByteBuffer` *wrapped* around the byte array
+
+**ByteBuffer example (writing)**  
 - Wrap a `ByteBuffer` around a byte array and write some values into it
   - `byte[] buffer = new byte[20];`
   - `java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.wrap(buffer);`
@@ -205,9 +245,30 @@ public class ByteBufferSampleCode {
   - `byteBuffer.putInt(0, intValue); // 4 bytes for int`
   - `byteBuffer.putDouble(4, doubleValue); // 8 bytes for double`
   - `byteBuffer.putChar(12, charValue); // 2 bytes for char`
-- The three values have been encoded as bytes in the byte[] buffer
-- The first 14 bytes of buffer can now be written to a binary file
-- Here is an example
+- The three values have been **encoded** as bytes in the byte[] buffer
+- The first 14 bytes of buffer can now be written to a **binary file**
+
+**ByteBuffer example (reading)**
+- Wrap a `ByteBuffer` around a byte array that has been read from a binary file and read some values into it
+	- `byte[] buffer = new byte[20];`
+	- `java.nio.ByteBuffer byteBuffer = java.nio.ByteBuffer.wrap(buffer);`
+	- Read the first 14 bytes of a binary file into the byte array buffer in which the binary file contines an int, double, and char values
+	- `int intValue = byteBuffer.getInt(0);`
+	- `double doubleValue = byteBuffer.getDouble(4);`
+	- `char charValue = byteBuffer.getChar(12);`
+- The three values have been **decoded** from bytes in the byte[] buffer
+- The three values can be used or written to a **text file**
+
+# Using the ByteBuffer to read / write binary files
+
+- Here is an example:
+	- Utilizing `FileChannel` classes
+		- `FileOutputStream`
+		- `FileInputStream`
+	- Note that when we read back in:
+		- Utilizing a try-with-resources block
+		- Utilizing the `allocate()` method of the `ByteBuffer` class
+		- Utilizing the `rewind()` method of the `ByteBuffer` class, once we have called the `FileChannel` `read()` method
 
 ```java
 import java.io.FileInputStream;
@@ -259,22 +320,33 @@ public class ByteBufferChannel {
 }
 ```
 
-**Data input and output streams**
+# Data input and output streams
+
 - In addition to reading and writing primitive types from/to a byte array, we can also do this with:
-  - `DataInputStream` for reading values
+
+**The DataInputStream class**
+
+- `DataInputStream` for reading values
     - Constructor requires an `InputStream`
     - `FileInputStream` works to read from a file
     - There is a constructor that takes a `String` filename
     - Has methods to read each primitive type, including `boolean`
     - Has a method to skip over bytes
-  `DataOutputStream` for writing values
+
+**The DataOutputStream class**
+
+- `DataOutputStream` for writing values
     - Constructor requires an `OutputStream`
     - `FileOutputStream` works to write to a file
     - There is a constructor that takes a `String` filename and optionally a `boolean` to append to an existing file
     - Has methods to write each primitive type, including `boolean`
+
+**Java Documentation for Data Input / Output Streams**
 - Documentation: <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/DataInputStream.html" target="blank">DataInputStream</a>, 
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/DataOutputStream.html" target="blank">DataOutputStream</a>
-- Sample program
+
+**Sample program**
+
   - Get a filename, a `double`, and an `int` as command-line parameters
   - Open a `DataOutputStream` and write the `double` and `int` to the `DataOutputStream`
   - Close the `DataOutputStream`
