@@ -254,8 +254,255 @@ public **sealed** class BankAccount **permits** EnhancedBankAccount, OtherEnhanc
 **Here's the Bank Account code - thus far**
 
 - `BankAccount.java`
+
+```java
+class BankAccount
+{
+	private final String ownerLastName;
+	private final String ownerFirstName;
+	private final String accountNumber;
+	private double checkingBalance;
+	private double savingsBalance;
+	private static int bankAccountCount = 0;
+	
+	BankAccount(String ownerLastName, String ownerFirstName, double checkingBalance, double savingsBalance)
+	{
+		this.ownerLastName = ownerLastName;
+		this.ownerFirstName = ownerFirstName;
+		this.accountNumber = makeAccountNumber();
+		this.checkingBalance = checkingBalance;
+		this.savingsBalance = savingsBalance;
+		
+		bankAccountCount = bankAccountCount+1;
+	}
+	
+	BankAccount(String ownerLastName, String ownerFirstName)
+	{
+		this(ownerLastName, ownerFirstName, 0.0, 0.0);
+	}
+	
+	public boolean withdrawFromChecking(double amount)
+	{
+		return false;
+	}
+	
+	public boolean withdrawFromSavings(double amount)
+	{
+		return false;
+	}
+	
+	public boolean transferFromSavingsToChecking(double amount)
+	{
+		return false;
+	}
+	
+	public boolean transferFromCheckingToSavings(double amount)
+	{
+		return false;
+	}
+	
+	public void depositToSavings(double amount)
+	{
+	}
+	
+	public void depositToChecking(double amount)
+	{
+	}
+	
+	public String toString()
+	{
+		return "";
+	}
+	
+	public String getOwnerLastName()
+	{
+		return "";
+	}
+	
+	public String getOwnerFirstName()
+	{
+		return "";
+	}
+	
+	public String getAccountNumber()
+	{
+		return "";
+	}
+	
+	public double getCheckingBalance()
+	{
+		return 0.0;
+	}
+	
+	public double getSavingsBalance()
+	{
+		return 0.0;
+	}
+	
+	private String makeAccountNumber()
+	{
+		String aNumber = "" + bankAccountCount;
+		
+		while( aNumber.length() < 6 )
+		{
+			aNumber = "0" + aNumber;
+		}
+		return aNumber;
+	}
+	
+	public static int getBankAccountCount()
+	{
+		return bankAccountCount;
+	}
+}
+```
+
 - `EnhancedBankAccount.java` 
+
+``` java
+import java.util.ArrayList;
+import java.util.Date;
+
+class EnhancedBankAccount extends BankAccount
+{
+	private ArrayList<Transaction> successfulTransactions;
+	private ArrayList<Transaction> failedTransactions;
+	
+	EnhancedBankAccount(String ownerLastName, String ownerFirstName, double checkingBalance, double savingsBalance)
+	{
+		super(ownerLastName, ownerFirstName, checkingBalance, savingsBalance);
+		
+		successfulTransactions = new ArrayList<>();
+		failedTransactions = new ArrayList<>();
+	}
+	
+	EnhancedBankAccount(String ownerLastName, String ownerFirstName)
+	{
+		this(ownerLastName, ownerFirstName, 0.0, 0.0);
+	}
+	
+	public boolean withdrawFromChecking(double amount)
+	{
+		return false;
+	}
+	
+	public boolean withdrawFromSavings(double amount)
+	{
+		return false;
+	}
+	
+	public boolean transferFromSavingsToChecking(double amount)
+	{
+		return false;
+	}
+	
+	public boolean transferFromCheckingToSavings(double amount)
+	{
+		return false;
+	}
+	
+	public void depositToSavings(double amount)
+	{
+	}
+	
+	public void depositToChecking(double amount)
+	{
+	}
+	
+	public ArrayList<Transaction> getAllSuccessfulTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getAllFailedTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getSavingsDepositTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	private ArrayList<Transaction> getTransactions(String transactionType)
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getCheckingDepositTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getSavingsWithdrawalTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getCheckingWithdrawalTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getSavingsToCheckingTransferTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getCheckingToSavingsTransferTransactions()
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getFailedTransactions(Date startDate, Date endDate)
+	{
+		return new ArrayList<Transaction>();
+	}
+	
+	public ArrayList<Transaction> getSuccessfulTransactions(Date startDate, Date endDate)
+	{
+		return new ArrayList<Transaction>();
+	}
+}
+```
+
 - `Transaction.java`
+
+``` java
+class Transaction
+{
+	final private String type;
+	final private java.util.Date date;
+	final private double amount;
+	
+	Transaction(String type, java.util.Date date, double amount)
+	{
+		this.type = type;
+		this.date = date;
+		this.amount = amount;
+	}
+	
+	public java.util.Date getDate()
+	{
+		return date;
+	}
+	
+	public double getAmount()
+	{
+		return amount;
+	}
+	
+	public String getType()
+	{
+		return type;
+	}
+	
+	public String toString()
+	{
+		return type + " " + date.toString() + " " + amount;
+	}
+}
+```
 
 - The code compiles
 - Note there is very limited functionality
