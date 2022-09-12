@@ -16,6 +16,10 @@ Object Oriented Programming - Basic Principles
 	- ***setters***
 	- `toString()`
 	- various others
+	- 
+```diff
+- getters gets me the state of data in a class, setters can set the state in the class 
+```
 
 # Encapsulation - Tightly Coupling Data and Methods
 
