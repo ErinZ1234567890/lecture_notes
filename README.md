@@ -8,7 +8,7 @@ I will periodically update this as the semester continues.
 
 ### [Lab Expectations](lab_expectations.md)
 
--Minimum Course Expectations
+- Minimum Course Expectations
 
 ### [0. Useful Course Software](00_useful_course_software.md)
 
@@ -126,7 +126,7 @@ I will periodically update this as the semester continues.
 
 ### [7. More on Reading and Writing Files](07_more_on_reading_and_writing_files.md)
 
--Writing Text Files
+- Writing Text Files
 	- `FileWriter`
 	- `BufferedWriter`
 	- `PrintWriter`
@@ -147,7 +147,7 @@ I will periodically update this as the semester continues.
 	
 ### [8. Selection Sort](08_selection_sort.md)
 
--Why its called a selection sort
+- Why its called a selection sort
 - Pseudo code for selection sort
 - Analysis of the comparisons and swaps involved: O(n^2) time complexity
 	- this is not a great time complexity, but conceptually the sort is easy to understand.
@@ -173,26 +173,26 @@ I will periodically update this as the semester continues.
 		- order matters, more specific exceptions being caught should appear before more general exceptions being caught.
 	- `finally` block
 	- checked exceptions vs unchecked exceptions
-		-specifies who is responsible for catching the exceptions
-			-methods can specify they may throw some exception	
-			-this delegate the work to the user to deal with exceptions which may be thrown, rather than the method which throws the exception
+		- specifies who is responsible for catching the exceptions
+			- methods can specify they may throw some exception	
+			- this delegates the work to the user to deal with exceptions which may be thrown, rather than the method which throws the exception
 			```java
 			public static void main(String[] args) throws java.io.IOException { ... }
 			```
 		
--Revisiting the Wrapper Classes
-	-creates object version of each of the primitive types
+- Revisiting the Wrapper Classes
+	- creates object version of each of the primitive types
 		- `Boolean`, `Double`, `Float`, `Integer, `Long`, `Short`, `Byte`, `Character`
-	-can use them with the various classes that only operate on objects
+	- can use them with the various classes that only operate on objects
 	- ArrayList and other data structures utilze java generics to specify the held type
 		-ArrayList<Integer>, ArrayList<String>, etc.
 	- autoboxing / unboxing	
 	- Wrapper classes have other utility methods built in that can be convenient for dealing with operations involving primitive types
-		- Integer.parseInt(str)` : tries to convert some `String` `str` to an `int`  
+		- `Integer.parseInt(str)` : tries to convert some `String` `str` to an `int`  
 		
 ### [10. Built-In Java Data Structures](10_built_in_java_data_structures.md)
 
--List Data Structures	
+- List Data Structures	
 	- `ArrayDeque`, `ArrayList`, `Vector`
 	- these are resizable list of objects
 	- useful to store data where you don't initially know how much there is to be stored
@@ -219,7 +219,7 @@ I will periodically update this as the semester continues.
 	- order of elements is undefined
 	
 - `TreeSet`
-	- uses a `TreeMap`
+	- uses a `TreeMap` (quicker lookup)
 	- elements are ordered by their ***natural order*** by default
 		- can use `Comparator` to override the natural ordering if you wish	
 		
@@ -227,10 +227,10 @@ I will periodically update this as the semester continues.
 - Using `Iterators` to iterate over Data Structures
 - `toArray()` method can be used to put data from Data Structures into a corresponding array.	
 
--Example code
-	-note: The `HashSet` had numbers printed out of order
-	-note: The `TreeSet` had numbers printed in increasing order
-	-note: `ArrayDeque` is used for both the stack and queue.
+- Example code
+	- note: The `HashSet` had numbers printed out of order
+	- note: The `TreeSet` had numbers printed in increasing order
+	- note: `ArrayDeque` is used for both the stack and queue.
 	- the key difference is that:
 		- the queue utilized FIFO (`pollFirst()`)
 			- resulted in printing values in the SAME order they were added to the queue
