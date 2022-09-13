@@ -35,14 +35,14 @@
        - Skip over multiple bytes of the input
   - Reading a single byte at a time is still slower than reading multiple bytes at a time into an array, but the `BufferedInputStream` is still much faster than `FileInputStream` reading a single byte at a time
 **Writing binary files**
-- FileOutputStream
+- `FileOutputStream`
   - Use either the `File file` constructor or the `String filename` to create
     - Can also include an optional `boolean` if you want to *append* to an existing file
   - Example
      - `java.io.FileOutputStream input = `<br/>&nbsp;`new java.io.FileOutputStream(args[0]);`
      - `java.io.FileOutputStream input = `<br/>&nbsp;`new java.io.FileOutputStream(args[0], true);`
      - where `args[0]` is filename and `true` says to *append* to the file
-  - Once you have the `FileInputStream`
+  - Once you have the `FileOutputStream`
      - Write  single byte
      - Write multiple bytes into a byte array
   - Writing a single byte at a time is quite slow
