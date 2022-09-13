@@ -112,7 +112,7 @@ I will periodically update this as the semester continues.
 	- `String` `split()` method
 	- Example `ReadTextFileAndParseTokensExample.java`
 
-### [6. Reading and Writing binary files](06_reading_and-writing_binary_files.md)
+### [6. Reading and Writing binary files](06_reading_and_writing_binary_files.md)
 
 - Classes for reading
 	- `FileInputStream`     : read bytes from a file
@@ -190,7 +190,7 @@ I will periodically update this as the semester continues.
 	- Wrapper classes have other utility methods built in that can be convenient for dealing with operations involving primitive types
 		- `Integer.parseInt(str)` : tries to convert some `String` `str` to an `int`  
 		
-### [10. Built-In Java Data Structures](10_built_in_java_data_structures.md)
+### [10. Built-In Java Data Structures](10_builtin_java_data_structures.md)
 
 - List Data Structures	
 	- `ArrayDeque`, `ArrayList`, `Vector`
