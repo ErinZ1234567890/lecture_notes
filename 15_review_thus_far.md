@@ -67,17 +67,16 @@ class className
 
 - can be used ***without creating an instance*** of the class
 - Example: The `Integer` class has static methods
-	- `valueOf(int i)`
+- `valueOf(int i)`
 ```java
 Integer intValue = Integer.valueOf(10);	
 ```
-	- Returns a new `Integer` object
-
-	- `parseInt(String s)`
+- Returns a new `Integer` object
+- `parseInt(String s)`
 ```java
 int v = Integer.parseInt(“10”);
 ```
-	- Returns `int` representation of a `String`
+- Returns `int` representation of a `String`
 
 **Non-statics methods**
 
