@@ -185,6 +185,13 @@ if( obj instanceof EnhancedBankAccount)
 
 # Polymorphism - dynamic dispatching
 
+```diff
+- bluejay, canary both extend bird. 
+- bluejay calls construtor of base class (superclass),override the toString & sing methods bc rewrite the behavior. @Override is not strictly necessary, but it tells compiler to check if the method you're overrrideing exists in superclass. 
+- 
+
+```
+
 - Inheritance has one more powerful feature built in, called ***polymorphism***
 - When we ***override*** some method that has been inherited from our parent class,
 we are specializing the behavior for that function.
@@ -312,6 +319,10 @@ class BirdHouse
 	}
 }
 ```
+```diff
+- ex of how this is useful: baseclass: visualizeRender w/ fxn render().
+
+```
 
 - We see that the instance method called will be dictated by the object's dynamic type, not its static type.
 
@@ -320,6 +331,11 @@ class BirdHouse
 - [Records were introduced in Java 14](https://docs.oracle.com/en/java/javase/14/language/records.html)
 - “It’s ideal for "plain data carriers," classes that contain data not meant to be altered and only the most fundamental methods such as constructors and accessors.”
 - The transaction class reduces to
+
+```diff
+- under the hood, it does the following two pieces of code, so it's implicitly defined for you:
+
+```
 
 ```java
 record Transaction(String type, java.util.Date date, double amount)
