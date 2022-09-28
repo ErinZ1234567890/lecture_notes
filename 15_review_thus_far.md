@@ -71,13 +71,13 @@ class className
 ```java
 Integer intValue = Integer.valueOf(10);	
 ```
-		- Returns a new `Integer` object
+	- Returns a new `Integer` object
 
 	- `parseInt(String s)`
 ```java
 int v = Integer.parseInt(“10”);
 ```
-		- Returns `int` representation of a `String`
+	- Returns `int` representation of a `String`
 
 **Non-statics methods**
 
