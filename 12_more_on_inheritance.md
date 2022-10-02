@@ -163,7 +163,7 @@ Object problematic = new Object();
 Object obj = new EnhancedBankAccount(“smith”, “mary”, “0000”);
 EnhancedBankAccount eba = obj; //compilation error about incompatible types
 EnhancedBankAccount eba = (EnhancedBankAccount) obj; //downcast, in this case valid.
-EnhancedBankAccount eba = (EnhancedBankAccount) obj; //downcast, in this case will cause a runtime error `java.lang.ClassCastException`
+EnhancedBankAccount eba = (EnhancedBankAccount) problematic; //downcast, in this case will cause a runtime error `java.lang.ClassCastException`
 ```
 - The first assignment, where we try to set some `EnhancedBankAccount` object (`eba`), to some `Object` (`obj`), will result in a will result in a ***compilation error.*** 
 
