@@ -128,4 +128,63 @@ Testing Goal: We want to develop a JUnit test for most of the functionality of p
 Intro to Interfaces
 ---------------------------
 
+## General motivation for interfaces
 
+In a general sense, an interface is a specification that defines how multiple entities interact.
+
+For example, the specification for an HDMI interface for a television or computer monitor would specify requirements for the physical connectector, the cable characteristics, and electrical characteristics (voltage, ground, signal rate, etc.).
+
+## Java Interfaces
+
+An interface in Java specifies the functions that must be implemented by a Java class that opts in and implements the interface.
+
+[From the Java tutorials:](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
+
+"In the Java programming language, an interface is a reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types. Method bodies exist only for default methods and static methods. Interfaces cannot be instantiated — they can only be implemented by classes or extended by other interfaces."
+
+We have not covered nested types yet (don't worry about them for now.)
+
+To define an interface, we create a file, similiar to a class, but use the `interface` keyword instead of `class`.
+
+```java
+interface GraphInterface
+{
+	//Here are some abstract methods
+	public boolean addVertex(int v);
+	public boolean addEdge(int fromVertex, int toVertex);
+	public boolean isConnected();
+
+	//Here is a default method - it has some function body implementation
+	default boolean isGraph()
+	{
+		return true;
+	}
+}
+```
+
+## Some notes on the internals of an Interface 
+
+1. Note that interfaces have **abstract methods**, where no function body is provided in the interface. The implementation for these abstract methods will by provided by the class that `implements` the Interface.
+2. Interface methods are implictly `abstract` and `public`, unless you specify otherwise.
+3. Interface fields are implicitly `public`, `static`, and `final`
+
+## Opting in to implement an interface
+
+I like to think of an interface as a contract of sorts. The `GraphInterface` interface says, "if you want to say you meet the requirements I specify, then you need to specify how all the methods I require work. Go implement them."
+
+Any class that `implements` the `GraphInterface` above must implement all three abstract methods. 
+
+```java
+public boolean addVertex(int v);
+public boolean addEdge(int fromVertex, int toVertex);
+public boolean isConnected();
+```
+
+And optionally implement `boolean isGraph()`, since a default implementation is provided in the default interface definition.
+
+## Implementing Interfaces vs Extending some Parent Class
+
+- Recall a class in Java **can only extend one class**.
+- On the other hand, a class **can implement multiple interfaces**.
+
+We will circle back to more on interfaces later. But, they will be utilized in Program Assignment 04, so we introduce them briefly here.
