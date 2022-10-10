@@ -62,7 +62,7 @@ JUnit is a simple framework to write repeatable tests.
 
 JUnit uses **assertions** to ***verify*** that an ***actual*** result is what it is ***expected*** to be.
 
-There arre various assertion methods available to verify:
+There are various assertion methods available to verify:
 
 - An array matches an expected result array
 - A String matches the expected String result
@@ -132,11 +132,11 @@ Intro to Interfaces
 
 In a general sense, an interface is a specification that defines how multiple entities interact.
 
-For example, the specification for an HDMI interface for a television or computer monitor would specify requirements for the physical connectector, the cable characteristics, and electrical characteristics (voltage, ground, signal rate, etc.).
+For example, the specification for an HDMI interface for a television or computer monitor would specify requirements for the physical connector, the cable characteristics, and electrical characteristics (voltage, ground, signal rate, etc.).
 
 ## Java Interfaces
 
-An interface in Java specifies the functions that must be implemented by a Java class that opts in and implements the interface.
+An interface in Java specifies the functions that must be implemented by a Java class that opts in and `implements` the interface.
 
 [From the Java tutorials:](https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html)
 
@@ -149,7 +149,7 @@ To define an interface, we create a file, similiar to a class, but use the `inte
 ```java
 interface GraphInterface
 {
-	//Here are some abstract methods
+	//Here are some abstract methods - no function body defined
 	public boolean addVertex(int v);
 	public boolean addEdge(int fromVertex, int toVertex);
 	public boolean isConnected();
@@ -185,6 +185,11 @@ And optionally implement `boolean isGraph()`, since a default implementation is 
 ## Implementing Interfaces vs Extending some Parent Class
 
 - Recall a class in Java **can only extend one class**.
-- On the other hand, a class **can implement multiple interfaces**.
+- On the other hand, a class **can implement multiple interfaces**. To do so, we use a comma separated list, like so:
+
+class A implements InterfaceB, InterfaceC, InterfaceD
+{
+
+}
 
 We will circle back to more on interfaces later. But, they will be utilized in Program Assignment 04, so we introduce them briefly here.
