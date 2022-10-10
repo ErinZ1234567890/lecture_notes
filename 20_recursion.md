@@ -8,7 +8,7 @@ In computer science, a recursive function is a function that ***calls itself*** 
 
 An seemingly natural example of such a function is the ***factorial function***. If n is a positive integer, then n factorial, written as n! , is simply n x (n-1) x (n-2) x ... x 2 ... x 1.
 
-It is also defined as n! = n x (n-1)!, as long as we define 0!
+- It is also defined as n! = n x (n-1)!, as long as we define 0!
 
 By convention, we define:
 
@@ -83,15 +83,13 @@ public static long factorial(long n) throws IllegalArgumentException
 
 Now, our factorial function explicitly throws an `IllegalArgumentException` if the user tries to compute the factorial of a negative number.
 
-This does two things, first it prevents stack overflow. And two, it makes it clear to the user the limitations of our factorial implementation here.
+- This does two things, first it prevents stack overflow. And two, it makes it clear to the user the limitations of our factorial implementation here.
 
-## Thinkings recursively
+## Thinking recursively
 
-Some functions just naturally seem to want to be implemented in a recursive manner.
-
-Typically, it involves problems that can be solved by breaking the problem up into similar sub problems.
-
-Factorial is the most obvious one, since the nth case is defined in terms of the (n-1) th case, as we saw above.
+- Some functions just naturally seem to want to be implemented in a recursive manner.
+- Typically, it involves problems that can be solved by breaking the problem up into similar sub problems.
+- Factorial is the most obvious one, since the nth case is defined in terms of the (n-1) th case, as we saw above.
 
 ## Implementing the sum recursively
 
@@ -99,7 +97,7 @@ Another natural function to implement recursively, is the sum of all non-negativ
 
 That is, n + (n-1) + ... + 1 + 0.
 
-Let's call this function `sum(n)`.
+- Let's call this function `sum(n)`.
 
 We can implement `sum(n)` as a recursive function also. Thinking recursively, we can break up a summation into sub summations via this recursive definition:
 
@@ -114,16 +112,18 @@ Of course, it is a well known fact that:
 
 sum(n) = n*(n+1) / 2, which can be proved via mathematical induction.
 
+This would obviously be more efficient than calculating the sum recursively, but we mention this example anyway.
+
 
 ## Recursion relies heavily on the stack
 
 When a recursive function executes, each succesive call to the function uses ***stack memory***, which is much smaller than ***heap memory***.
 
-On my laptop, somewhere around `sum(10960)` my java runtime ran out of stack space and stopped functioning.
+- On my laptop, somewhere around `sum(10960)` my java runtime ran out of stack space and stopped functioning.
 
 The java runtime option -Xss can be used to increase the **stack size**, using -Xss400M sets the stack size to 400M. This allowed the sum to work for larger input values.
 
-I stopped trying at 1,000,000.
+- I stopped trying at 1,000,000.
 
 **An aside:** The -Xmx option sets the ***maximum heap size***.
 
@@ -140,9 +140,9 @@ F_1 = 1
 F_n = F_(n-1) + F_(n-2), for n > 1
 ```
 
-This can be implemented as a recursive function. However, due to the number of recursive calls involved, it gets ***slow very quickly***.
+- This can be implemented as a recursive function. However, due to the number of recursive calls involved, it gets ***slow very quickly***.
 
-For example, even for a small case, say the 5th Fibonacci number, our stack already is being heavily utilized, and often computing redundant sub problems more than once:
+- For example, even for a small case, say the 5th Fibonacci number, our stack already is being heavily utilized, and often computing redundant sub problems more than once:
 
 ![compute_fib_5](pngs/recursion/01_compute_fib_5.PNG)
 
@@ -172,26 +172,26 @@ As we have seen, recursion is great for problems that can be broken up into smal
 
 **Limitations**
 
-We also saw that we can run into issues with infinite recursion, stack overflow, and potentially slower computations as well.
+- We also saw that we can run into issues with infinite recursion, stack overflow, and potentially slower computations as well.
 
-We saw that stack overflow can occur, even without infinite recursion happening. 
+- We saw that stack overflow can occur, even without infinite recursion happening. 
 
 **Solutions**
 
-Making sure our recursive function should always reach some base case will stop infinite recursion from happening.
+- **Solution to Infinite recursion:** Making sure our recursive function will always reach some base case will stop infinite recursion from happening.
 
-Sometimes increasing the stack size can help mitigate the stack growing to large with these recursive functions.
+- **Solution to stack size issue:** Sometimes increasing the stack size can help mitigate the stack growing to large with these recursive functions.
 
-We could make our recursive function more efficient by storing the results of sub problems. This is called **amortization**.
+- **Solution to efficiency issue:** We could make our recursive function more efficient by storing the results of sub problems. This is called **amortization**.
 
 ## Amortized Fibonacci
 
 Here is the fibonacci sequence, but made more efficient. We still use recursion, however, note that we are only calculating each sub problem one time. Once a sub problem is solved, it is stored in some data structure, in this case, an array.
 
-We see that in order to be more efficient, the trade off is we need to utilize more storage. We call this space complexity. We are lowering our time complexity by increasing our space complexity.
+- We see that in order to be more efficient, the trade off is we need to utilize more storage. We call this space complexity. We are lowering our time complexity by increasing our space complexity.
 
 ```java
-private static void fib_helper(long[] fib_nums, int i)
+	private static void fib_helper(long[] fib_nums, int i)
 	{
 		//This stops infinite recursion,
 		//and also ensures we don't get an ArrayIndexOutOfBoundsException.
