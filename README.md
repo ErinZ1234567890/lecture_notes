@@ -237,3 +237,72 @@ I will periodically update this as the semester continues.
 		- the stack utilized LIFO (`pollLast()`)	
 			- resulted in printing values in REVERSE order they were added to the stack
 
+### [11. OOP Basic Principles](11_oop_basic_basic_principles.md)			
+
+- Classes
+- Encapsulation
+- `BankAccount` Example
+- Class modifiers
+- Acces modifiers
+- static / non-static
+- Constructors
+- Inheritance
+	- subclasses
+	- superclasses
+- Sealed classes	
+- importing
+
+### [12. More on Inheritance](12_more_on_inheritance.md)
+
+- `EnhancedBankAccount` example
+- `Transaction` example
+- Subclassing -> maximize code reuse
+- Upcasting / Downcasting / `instanceof`
+- Polymorphism (Dynamic Dispatching)
+- Records
+
+### [13. More Introductory Info](13_more_introductory_info.md)
+
+- the main method
+- types of variables
+	- instance variables
+	- class variables
+	- local variables
+	- parameters
+	- fields (instance and class variables)
+- conventions naming variables
+- conventions for constants
+- variable scope
+- variable declaration
+- operations
+	- addition, subtraction/negation, division, multiplication, logical and, logical or, logical negation 
+	- short circuiting
+- casting primitive types
+- General coding practices
+	- think high level first
+	- work incrementally during implementation
+	- debug / test your code
+
+### [14. Lab04 and Program Assignment 03](14_lab04_and_program_assignment_3.md)
+
+- More descriptions on these two assignments
+
+### [15. Review Thus Far](15_review_thus_far.md)
+
+- defining a class
+- inheritance
+- static vs non-static fields
+- class methods
+	- constructors
+	- non-construct methods
+	- static methods
+	- non-static methods
+	- overloaded methods
+- subclassing
+	- subclass, superclass, `extends`
+	- java only suports *single inheritance*
+- Objects
+	- creating an instance at runtime, `new`
+	- comparing objects
+		- `==` vs `equals()`
+- Accessing fields and methods of a class
