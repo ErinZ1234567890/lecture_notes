@@ -196,17 +196,17 @@ class Shape implements Drawable
 		this.dilation = 1.0;
 	}
 
-	void dilate(double dilationFactor)
+	public void dilate(double dilationFactor)
 	{
 		this.dilation = dilationFactor;
 	}
 
-	double getArea()
+	public double getArea()
 	{
 		return 0.0;
 	}	
 
-	double getPerimeter()
+	public double getPerimeter()
 	{
 		return 0.0;
 	}
@@ -224,13 +224,13 @@ class Rectangle extends Shape
 	}
 
 	@Override
-	double getArea()
+	public double getArea()
 	{
 		return this.dilation * (this.width * this.height);
 	}
 
 	@Override
-	double getPerimeter()
+	public double getPerimeter()
 	{
 		return this.dilation * (2.0 * (this.width + this.height));
 	}
@@ -244,13 +244,13 @@ class RightTriangle extends Rectangle
 	}
 
 	@Override
-	double getArea()
+	public double getArea()
 	{
 		return 0.5 * super.getArea();
 	}
 
 	@Override
-	double getPerimeter()
+	public double getPerimeter()
 	{
 		double hypotenuse = Math.sqrt(width * width + height * height);
 		return this.dilation * (hypotenuse + width + height);
@@ -268,13 +268,13 @@ class Circle extends Shape
 	}
 
 	@Override
-	double getArea()
+	public double getArea()
 	{
 		return PI * radius * radius; 
 	}
 
 	@Override
-	double getPerimeter()
+	public double getPerimeter()
 	{
 		return 2.0 * PI * radius;
 	}
