@@ -46,7 +46,20 @@ The user has given the following requirements:
 	- which methods in your interface would you make abstract? which would you make default? 
 		- the choice you make here are sort of subjective, you could make convincing arguments either way I'm sure.
 		- However, the important take away: what's the difference between the two (abstract vs default)?
+```disp
+interface ExpresssionEvaluator{
+	Integer add(int a, int b);
+	Integer multiply(int a, int b);
+	Integer subtract(int a, int b);
+	//these are abstract functions bc no function body defined. can also be default tbh
+	default ArrayList<String> tokenizeExpression(String exp) { // deafut means no need to write anything bc already has default behavior
+		ArrayList<String> lot = StringToken;
+	}
+	
 
+}
+- need ot know what an interface, abstract methods, default methods are
+```
 **Part B**
 - B. Looking at the Expression Interpretation, what data structure best resembles it / would you use to store this interpretation?
 	- Justify your answer.
@@ -86,7 +99,16 @@ Expression Interpretation:
 
 (3 + (4 * (2 + 3))) * (6 - 4) = 46       
 ```
+```disp
+- tree moment
+- interpretation looks like a tree, but evalutation looks like a stack
+- and then follow the current subtree that you're building up
+- obvs a binary tree bc 
+```
 
+```disp
+- all the numbers reside at leaves. bc binary operator needs 2 numbers in order to evaluate it.
+```
 Step by step Evaluation:
 
 ```
@@ -175,13 +197,23 @@ Step by step Evaluation:
 
 Output: 46
 ```
-
+```disp
+- stack
+```
 ### Q2: Fun with Shapes 
 
 Suppose we want to design some `Shape` functionality. 
 
 The following is provided. It is intended to compile, but I didn't take the time to verify that is the case.
 Assume it does.
+```disp
+- inheritance question
+- this.dilation is valid in rectangle bc rectangle extends shape and dilation is protected so rectangle also inherits dilation
+- also think abt edge cases for JUnit testing. ex: negative dilation.
+- right triangle extends rectangle, not shape
+- remember how to get super and this
+- shapeTest compiles
+```
 
 ``` java
 interface Drawable
@@ -403,10 +435,17 @@ String[] words = new String[]{"elephant", "cat", "dog", "apple", "queen", "king"
 
 **Part A**
 - we print each unique word exactly once
+```disp
+- treee set or hash set
+```
 
 **Part B**
 - we print each unique words in lexicographical order
 
 - Are there any data structures that could help get the job done with relative ease?
+
+```disp
+- tree set
+```
 
 Best of luck studying.
