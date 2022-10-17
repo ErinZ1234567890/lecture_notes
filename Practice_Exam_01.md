@@ -270,13 +270,13 @@ class Circle extends Shape
 	@Override
 	public double getArea()
 	{
-		return PI * radius * radius; 
+		return this.dilation * (PI * radius * radius); 
 	}
 
 	@Override
 	public double getPerimeter()
 	{
-		return 2.0 * PI * radius;
+		return this.dilation * (2.0 * PI * radius);
 	}
 }
 ```
@@ -299,6 +299,9 @@ class Circle extends Shape
 	- What values should we define for `expectedArea` and `expectedPerimeter` such that the following test would pass?
 
 ``` java
+import java.util.ArrayList;
+//assume all junit test imports are present here too.
+
 class ShapeTest
 {
 	@Test
@@ -306,7 +309,7 @@ class ShapeTest
 	{
 		Shape s1 = new Rectangle(3.0,4.0);
 		Shape s2 = new Circle(3.0);
-		Shape s3 = new RightTriangle(20.0, 10.0);
+		Shape s3 = new RightTriangle(12.0, 5.0);
 
 		ArrayList<Shape> shapes = new ArrayList<>();
 		shapes.add(s1);
