@@ -64,7 +64,7 @@ When nodes are deleted, the resulting tree nedds to maintain the subtree key ord
 `getSuccessor(Node x)`
 
 This will return the node having the ***smallest key value that is greater than*** the specified node's key.
-- In other words, it will return the node whose key is the ***least upper bound*** of the specified node's key.
+- In other words, it will return the node whose key is the ***least upper bound*** of the specified node's key. AKA **supremum**
 
 **Note:** The node with the largest key value has a null successor.
 
@@ -73,7 +73,7 @@ This will return the node having the ***smallest key value that is greater than*
 `getPredecessor(Node x)`
 
 This will return the node having the ***largest key value that is smaller than*** the specified node's key.
-- In other words, it will return the node whose key is the ***greatest lower bound*** of the specified node's key.
+- In other words, it will return the node whose key is the ***greatest lower bound*** of the specified node's key. AKA **infimum**
 
 **Note:** The node with the smallest key value has a null predecessor.
 
@@ -114,7 +114,10 @@ This function will visit each node in the BST, utilizing an ***in order traversa
 	1. the nodes of our left subtree,
 	2. the root of the tree, ie Node x,
 	3. the nodes of our right subtree last.
-
+```disp
+- order would be from smallest to largest
+- traverse from left to right
+```
 ### 9. Pre order tree walk
 
 `preOrderWalk(Node x)`
@@ -126,6 +129,9 @@ This function will visit each node in the BST, utilizing a ***pre order traversa
 	1. the root of the tree, ie Node x,
 	2. the nodes of our left subtree,
 	3. the nodes of our right subtree
+```disp
+- visit yourself first and then subtrees
+```
 
 ### 10. Post order tree walk
 
@@ -138,7 +144,9 @@ This function will visit each node in the BST, utilizing a ***post order travers
 	1. the nodes of our left subtree,
 	2. the nodes our our right subtree,
 	3. the root of the tree, ie Node x.
-
+```disp
+- visit subtrees before visitng yourself
+```
 ### 11. Get Root
 
 `getRoot()`
@@ -188,6 +196,9 @@ class Node
 
 	//optional: some held associated data
 }
+```
+```disp
+- these fields tell us all the info we need to know.
 ```
 
 We will also have methods:
@@ -257,6 +268,10 @@ class Node
 We will utilize two local `Node` variables, say `x` and `y`, to search for the correct place to insert `Node` `z`.
 
 `x` is initialized to the root, `getRoot()`, and `y` to `null` (the parent of the root).
+
+```disp
+- we got 2 nodes, y is the parent, x is the node we're looking at
+```
 
 **Edge case:** 
 
@@ -416,7 +431,7 @@ else return getNode(x.getRight(), key) // ...............search right subtree
 - We call this linear search and later we will see it denoted as O(n)
 - If we have a perfectly balanced tree like the one below, then it takes at most 5 comparisons to either find the key we are looking for or that the key does not exist in the tree
 = The log<sub>2</sub> of 15 is approximately 4, which is the number of nodes that need to be examined for a value that is not in the tree.
-- We don't need to have a complete binary search tree for good result, we just need maximum length branches that are not similar in length  compared to the number of keys on the tree. The search is O(log n)
+- We don't need to have a complete binary search tree for good result, we just need maximum length branches that are not similar in length  compared to the number of keys on the tree. The search is O(log n) (LOG BASE 2! BC SPLITS IT IN HALF)
   - Once again, you will discuss algorithmic performance more in data structures and algorithms
   - There are algorithms for rebalancing trees
 
@@ -454,7 +469,11 @@ if(x != null)`
      - If the Node has a right child, then return the minimum Node of the right subtree (we already saw `getMin`)
      - If the Node does not have a right child, then return the first ancestor of `x` in which `x` is in the Node's left subtree
         - This will be the first Node that has a key greater than `x`'s
-
+```disp
+- go to right subtree and find leftmost node
+- or if no subtree: go up until you go to the right (that's the successor)
+- if no successor: then will reach the root
+```
 ``` java
 getSuccessor(Node x)
     if(x.getRight() != null) return getMin(x.getRight())
@@ -525,7 +544,10 @@ getSuccessor(Node x)
       - If the Node has a left child, then return the maximum Node of the left subtree
       - If the Node does not have a left child, then return the first ancestor of x in which x is in the Node's right subtree
         - This will be the first Node that has a key less than x's
-
+      
+```disp
+- basically the same thing as successor but with the left instead of right
+```
 ``` java
 getPredecessor(Node x)
     if(x.getLeft() != null)
@@ -569,7 +591,9 @@ getPredecessor(Node x)
   - Exit while loop and return y = 50
 
 **Deleting**
-
+```disp
+- this si why successor and predecessor is important
+```
 - There are two functions associated with deleting a node
   - `deleteNode(Node z)`
     - Delete Node `z` from the tree
@@ -605,8 +629,18 @@ getPredecessor(Node x)
      - This is done indirectly via `shiftNode(z, z.getLeft())`, `z = Node 40`
   - To delete 60, we set 75's left child to 70
      - This is done indirectly via `shiftNode(z, z.getRight())`, `z = Node 60`
+
+```disp
+- just take the one that's not null
+```
 - Removing a Node with two children
   - We will return to this case once we have discussed the `shiftNode` function
+
+```disp
+- the thing that replaces the deleted node is the successor
+- obvs can also use predecessor
+- bc successor/predecessor is closest, but also bc they, by def, have only 1 child
+```
 
 **shiftNode**
 
@@ -624,6 +658,10 @@ getPredecessor(Node x)
     - If `u` is the right child, make `v` the right child of `u`'s parent
     - Set `v`'s parent to be `u`'s parent
 - Pseudo code for `shiftNode(Node u, Node v)`
+```disp
+- helper fxn so honestly could be private bc most ppl don't need to access it
+```
+
 
 ``` java
 if(u.getParent() == null) // ...................u is the root
@@ -688,7 +726,9 @@ else
 - The `getHeight(Node x)` method returns the height of the subtree rooted at x by recursively calculating the height of x's left and right subtrees
 - To get the height of the tree, we get the height of the root of the tree
 - Here is the pseudo code for getHeight(Node x)
-
+```disp
+- compare height of left subtree and right subtree & then use recursion
+```
 ``` java
 if( x == null )
 		return -1
