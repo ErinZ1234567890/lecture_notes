@@ -306,3 +306,122 @@ I will periodically update this as the semester continues.
 	- comparing objects
 		- `==` vs `equals()`
 - Accessing fields and methods of a class
+
+### [16. Getting Ready for the Reaminder of Semester](16_getting_ready_for_remainder_of_the_semester.md)
+
+- Expected Proficiency
+- Refresher on parsing delimited text
+	- `StringTokenizer`, `Scanner`, `String.split()`
+- `HashSet` and `TreeSet`
+- `ArrayDeque`
+
+### [17. Graphs](17_graphs.md)
+
+- Definition of Graph
+	- Vertices / Edges
+	- fromVertex, toVertex
+- Undirected Graph
+- Directed Graph
+- Paths
+- Connected Graphs / Unconnected Graphs / Strongly Connected Graphs
+	- Algorithm for determining connected / strongly connected 
+	- Compliment of a Graph
+
+### [18. Testing and Intro to Interfaces](18_testing_and_interfaces_intro.md)
+
+- Types of testing
+	- unit testing
+	- functional testing
+	- integration testing
+	- regression testing
+	- performance testing
+	- system testing
+	- verification testing
+	- validation testing
+
+- Software Development
+	- requirements
+	- software design
+	- software verification
+
+- JUnit testing
+	- assertions used to verify code works as we expect 
+	- leverage expected vs actual values
+	- tests should be repeatable and isolated
+
+- Interfaces
+	- specify the functions that must be implemented by a Java class that opts into implement the interface
+	- abstract vs default methods
+		- abstract methods have no function body, and must be defined by the class implementing the interface
+		- default methods do have a function body. Implementing class can optionally override the default behavior but not required.
+	- methods are implicitly public and abstract, unless otherwise specified.
+	- also possible to define static methods, which also must have a function body provided.
+	- fields in an interface are implicitly constants, ie static and final.
+	- can implement multiple interfaces, can only extend one parent class.
+
+### [19. Throwing Exceptions](19_throwing_exceptions.md)
+
+- The `throw` statement
+- `Exceptions` extend the `Throwable` class
+- our `	Graph` class utilizes `GraphException`, a subclass of the `Exception` class.
+
+### [20. Recursion](20_recursion.md)
+
+- the factorial example
+	- considering base cases and recursive cases
+- Stack overflow
+	- can occur if you don't have a well defined base case
+	- can occur if your making a lot of function calls without the stack reducing in size
+		- can increase your stack size with `-Xss` argument
+		- the `ss` stands for Stack size.
+- Thinking recursively
+	- Divide and Conquer: break a problem up into similar sub problems.
+	- Use the solutions to the sub problems to make it easier to define the problem currently at hand.
+- Implementing the sum recursively
+- Recursion relies heavily on the Stack
+- the fibonacci numbers
+	- relies on two base cases to define the general case
+	- can be inefficient, needing to solve subproblems multiple times.
+- Limitations of Recursion
+	- the pros and cons are discussed
+- Amortized Fibonacci
+	- we can store the results of sub problems, to speed up our efficiency
+	- increase our space complexity to lower our time complexity.
+
+### [21. Trees](21_trees.md)
+
+- Definition of a tree
+	- connected, directed grapth, acyclic, has special root node.
+- Terminology:
+	- nodes, parent, child, leaf, height, ancestor, descendant
+- Tree example
+- Trees can be thought of recursively.
+	- Trees are made up of smaller subtrees
+
+### [22. Binary Search Trees](22_binary_search_trees.md)
+
+- Definition of a BST
+	- binary tree (each node has at most 2 children)
+	- children to our left have keys strictly less than ours
+	- children to our right have keys strictly greater than ours
+
+#### Functionality 
+
+- Inserting a node (***if node being inserted has key less than we we are, insert in the left subtree, otherwise insert in the right subtree***)
+- deleting a node (***in general, a bit complicated***)     
+- finding our successor (***least upper bound***)
+- finding our predecessor   (***greatest lower bound***)
+- finding our minimum (***keep going left until we no longer can***)
+- finding our maximum (***keep going right until we no longer can***)
+- searching (***similar to insertion, we go left or right depending on how where we are compares to the key being searched for***)
+- Traversals
+	- inOrder   (1. visit left,     2. visit yourself, 3. visit right)
+	- preOrder  (1. visit yourself, 2. visit left,     3. visit right)
+	- postOrder (1. visit left,     2. visit right,    3. visit yourself)
+
+#### BST implementation details
+ - motivated by wikipedia. see notes and that for more details.
+ - height is also discussed.
+
+
+
