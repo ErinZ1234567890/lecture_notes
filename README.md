@@ -419,6 +419,13 @@ I will periodically update this as the semester continues.
 	- preOrder  (1. visit yourself, 2. visit left,     3. visit right)
 	- postOrder (1. visit left,     2. visit right,    3. visit yourself)
 
+### Importance of Balancing a BST
+
+- If the BST is perfectly balanced, then searching for values will be more efficient, O(lg n)
+- if the BST is not balanced, the searching tends toward being linear, O(n)
+- how the BST is structured depends on the order in which we add / delete nodes with various key values.
+- algorithms exist to ensure a BST remains balanced, but that is beyond our scope.
+
 #### BST implementation details
  - motivated by wikipedia. see notes and that for more details.
  - height is also discussed.
