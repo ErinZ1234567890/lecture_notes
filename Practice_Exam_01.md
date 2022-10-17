@@ -178,7 +178,7 @@ Output: 46
 
 ### Q2: Fun with Shapes 
 
-Suppose we want to design some Shape functionality. 
+Suppose we want to design some `Shape` functionality. 
 
 The following is provided. It is intended to compile, but I didn't take the time to verify that is the case.
 Assume it does.
@@ -286,13 +286,13 @@ class Circle extends Shape
 ```
 
 **Part A**
-- Make a list of all the cases you would consider for some JUnit tests that would test the functionality of each Shape above.
+- Make a list of all the cases you would consider for some JUnit tests that would test the functionality of each `Shape` above.
 	- try to make your list as exhaustive as possible
 	- are there any edge cases that aren't being considered in the code above?
 		- if so, how would you change the code to account for any such edge cases?
 
 **Part B**
-- Focusing on the RightTriangle, how is it being implemented differently from the Circle and Rectangle classes?
+- Focusing on the `RightTriangle`, how is it being implemented differently from the `Circle` and `Rectangle` classes?
 	- What are we leveraging in our implementation of the class? 
 	- Are there any design tradeoffs here?
 	- Could you define the RightTriangle class differently than above? If so, how? 
@@ -300,8 +300,8 @@ class Circle extends Shape
 **Part C**
 - Consider the following test code below:
 	- Will this compile?
-		- Is the dilate() method something that all the shape classes can utilize?
-		- can we make an ArrayList<Shape> here as we are doing?
+		- Is the `dilate()` method something that all the classes deriving the `Shape` class can utilize?
+		- can we make an `ArrayList<Shape>` here as we are doing?
 		- Justify why or why not for both. 
 	- What values should we define for `expectedArea` and `expectedPerimeter` such that the following test would pass?
 
@@ -388,7 +388,7 @@ E = {(2,4),(0,5),(5,9),(8,7),(7,3),(1,3),(3,5),(2,6),(1,9),(6,4),(7,0)}
 	- If so, give an example.
 
 **Part E**
-- If you were utilizing a StringTokenizer:
+- If you were utilizing a `StringTokenizer`:
 	- what delimiter would you utilize to properly parse the Vertices? 
 	- what delimiter would you utilize to properly parse the Edges?
 
