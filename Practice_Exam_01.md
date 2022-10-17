@@ -28,13 +28,17 @@ Practice Exam
 The user has given the following requirements: 
 - Statements of an expression will be given as a `String`. (see the Input String below)
 - Note the Input String is not necessarily readable in the traditional sense, but is still interpretable (concrete example below).
+
+**Requirements**
+
 - Need the ability to add, subtract, multiply, (not division just so you don't have to consider integer division).
 - No need to respect order of operations (PEMDAS) or parentheses, we just process the input string from left to right.
 - For simplicity, assume the numeric values involved in the input expression are integers.
 - Need to be able to print out how the expression is being interpretted (see the Expression Interpretation below)
 - Need to be able to print out step by step how the evaluation simplifies (see Step by step Evaluation below)
 
-- A: Define an interface `ExpressionEvaluator` that one could use to fullfill the requirements as described above.
+**Part A**
+- Define an interface `ExpressionEvaluator` that one could use to fullfill the requirements as described above.
 	- the interface should specify how each of the operations will be handled
 	- the interface should specify how an expression given as a String will be broken up into some sort of tokens
 	- are there any other methods we could use to specify how an ExpressionEvaluator works?
@@ -43,17 +47,17 @@ The user has given the following requirements:
 		- the choice you make here are sort of subjective, you could make convincing arguments either way I'm sure.
 		- However, the important take away: what's the difference between the two (abstract vs default)?
 
+**Part B**
 - B. Looking at the Expression Interpretation, what data structure best resembles it / would you use to store this interpretation?
 	- Justify your answer.
-
 - Notice anything special about where the numeric values reside?
 - Notice anything special about where the operators reside?
 - Based off what you have noticed, do you think there is a way you could determine whether a given exression is well formed?
 	- ie, just looking at the interpretation below, without trying to simplify it, could you tell if the expression is invalid?
 
-- C. Looking at the Step by step Evaluation, what data structure best resembles the output / would you use to implement the simplification?
+**Part C**
+- Looking at the Step by step Evaluation, what data structure best resembles the output / would you use to implement the simplification?
 - Justify your answer.
-
 - What do we do when we encounter a new operator?
 	- Depending on the data structure you chose, explain what method applies relative to that data structure.
 - What do we do when we encounter a new value?
@@ -67,7 +71,7 @@ The user has given the following requirements:
 	- What's special about step 12 here?
 	- What would indicate the expression being simplified was not well formed?
 
-
+**Concrete Example**
 Input String: ```* + 3 * 4 + 2 3  - 6 4```
 
 Expression Interpretation:
@@ -281,17 +285,20 @@ class Circle extends Shape
 }
 ```
 
-- A: Make a list of all the cases you would consider for some JUnit tests that would test the functionality of each Shape above.
+**Part A**
+- Make a list of all the cases you would consider for some JUnit tests that would test the functionality of each Shape above.
 	- try to make your list as exhaustive as possible
 	- are there any edge cases that aren't being considered in the code above?
 		- if so, how would you change the code to account for any such edge cases?
 
-- B: Focusing on the RightTriangle, how is it being implemented differently from the Circle and Rectangle classes?
+**Part B**
+- Focusing on the RightTriangle, how is it being implemented differently from the Circle and Rectangle classes?
 	- What are we leveraging in our implementation of the class? 
 	- Are there any design tradeoffs here?
 	- Could you define the RightTriangle class differently than above? If so, how? 
 
-- C: Consider the following test code below:
+**Part C**
+- Consider the following test code below:
 	- Will this compile?
 		- Is the dilate() method something that all the shape classes can utilize?
 		- can we make an ArrayList<Shape> here as we are doing?
@@ -328,7 +335,7 @@ class ShapeTest
 		}
 
 		//What should these values be? High level? You don't need to work out the exact values
-		//just have a general idea here.
+		//just have a general idea here, with some mathematical expression for instance.
 		double expectedArea = ???;
 		double expectedPerimeter = ???;
 
@@ -338,14 +345,15 @@ class ShapeTest
 }
 ```
 
-- D: Suppose we stored one of each to the following in the `Shape` class:
+**Part D**
+- Suppose we stored one of each to the following in the `Shape` class:
 	- some `private` field
 	- some `public` field 
 	- some `protected` field
 	- some `static` field  
 	- some `package` field
 
-	Compare and contrast the usage of each field.
+- Compare and contrast the usage of each field.
 	- Which could be directly accessed by some subclass? 
 	- Which could only be indirectly accessed by some subclass, and how?
 	- Which could be accessed by anyone?
@@ -357,19 +365,30 @@ class ShapeTest
 
 ### Q3: Suppose we specify a Undirected Graph, defined as follows:
 
+```
 G = (V, E)
 V = {0,1,2,3,4,5,6,7,8,9}
 E = {(2,4),(0,5),(5,9),(8,7),(7,3),(1,3),(3,5),(2,6),(1,9),(6,4),(7,0)}
+```
 
-- A. Draw a pictural representation of the graph. 
+**Part A**
+- Draw a pictural representation of the graph. 
 	- Tip: Start by putting all vertices around the perimeter of some imaginary circle, then add the specified edges.
-- B. Is the graph connected?
+
+**Part B**
+- Is the graph connected?
 	- If not, give a counter example. (Specify two vertices such that no path exists between them).
 	- If not, how many sub pieces are there?
-- C. If possible, define a path from 0 to 9. Are there more than one such paths?
-- D. Are there any cycles in the graph?
+
+**Part C**
+- If possible, define a path from 0 to 9. Are there more than one such paths?
+
+**Part D**
+- Are there any cycles in the graph?
 	- If so, give an example.
-- E. If you were utilizing a StringTokenizer:
+
+**Part E**
+- If you were utilizing a StringTokenizer:
 	- what delimiter would you utilize to properly parse the Vertices? 
 	- what delimiter would you utilize to properly parse the Edges?
 
@@ -381,8 +400,13 @@ String[] words = new String[]{"elephant", "cat", "dog", "apple", "queen", "king"
 ```
 
 - Write some code such that:
-	- A: we print each unique word exactly once
-	- B: we print each unique words in lexicographical order
-	- Are there any data structures that could help get the job done with relative ease?
+
+**Part A**
+- we print each unique word exactly once
+
+**Part B**
+- we print each unique words in lexicographical order
+
+- Are there any data structures that could help get the job done with relative ease?
 
 Best of luck studying.
