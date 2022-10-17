@@ -295,7 +295,7 @@ class Circle extends Shape
 - Focusing on the `RightTriangle`, how is it being implemented differently from the `Circle` and `Rectangle` classes?
 	- What are we leveraging in our implementation of the class? 
 	- Are there any design tradeoffs here?
-	- Could you define the RightTriangle class differently than above? If so, how? 
+	- Could you define the `RightTriangle` class differently than above? If so, how? 
 
 **Part C**
 - Consider the following test code below:
