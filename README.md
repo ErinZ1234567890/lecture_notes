@@ -409,8 +409,8 @@ I will periodically update this as the semester continues.
 
 - Inserting a node (***if node being inserted has key less than we we are, insert in the left subtree, otherwise insert in the right subtree***)
 - deleting a node (***in general, a bit complicated***)     
-- finding our successor (***least upper bound***)
-- finding our predecessor   (***greatest lower bound***)
+- finding our successor (***least upper bound, the left most node in our right subtree***)
+- finding our predecessor   (***greatest lower bound, the right most node in our left subtree***)
 - finding our minimum (***keep going left until we no longer can***)
 - finding our maximum (***keep going right until we no longer can***)
 - searching (***similar to insertion, we go left or right depending on how where we are compares to the key being searched for***)
